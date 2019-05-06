@@ -9,6 +9,18 @@ import (
 )
 
 var reg = regexp.MustCompile(`^([+\-]?)(0*)([0-9]+)`)
+var charMap = map[rune]int{
+	'0': 0,
+	'1': 1,
+	'2': 2,
+	'3': 3,
+	'4': 4,
+	'5': 5,
+	'6': 6,
+	'7': 7,
+	'8': 8,
+	'9': 9,
+}
 
 func myAtoi(str string) int {
 	fields := strings.Fields(str)
@@ -44,14 +56,14 @@ func myAtoi(str string) int {
 
 		if len(text) == 19 {
 			for _, c := range "9223372036854775807" {
-				x, err := strconv.Atoi(string(c))
-				if err != nil {
+				x, ok := charMap[c]
+				if !ok {
 					return 0
 				}
 
 				for _, target := range text {
-					y, err := strconv.Atoi(string(target))
-					if err != nil {
+					y, ok := charMap[target]
+					if !ok {
 						return 0
 					}
 					if y > x {
@@ -66,7 +78,6 @@ func myAtoi(str string) int {
 		}
 		n, err := strconv.Atoi(text)
 		if err != nil {
-			fmt.Println(err)
 			return 0
 		}
 
