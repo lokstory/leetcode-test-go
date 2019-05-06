@@ -1,4 +1,4 @@
-# codility-test-go
+# leetcode-test-go
 
 These answers are just focus on correctness, and find fast ways to finish the them.
 
