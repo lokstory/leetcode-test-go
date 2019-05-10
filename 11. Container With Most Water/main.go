@@ -16,7 +16,7 @@ func maxArea(height []int) int {
 	var max int
 	for xID, x := range height {
 		for yID, y := range height {
-			distance := int(math.Abs(float64(xID - yID)) * math.Min(float64(x), float64(y)))
+			distance := int(math.Abs(float64(xID-yID)) * math.Min(float64(x), float64(y)))
 			if distance > max {
 				max = distance
 			}
