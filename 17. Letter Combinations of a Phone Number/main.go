@@ -41,27 +41,53 @@ func letterCombinations(digits string) []string {
 			for _, c := range list {
 				result = append(result, string(c))
 			}
-		} else {
-			var newList []string
-			for _, text := range result {
-				for _, c := range list {
-					newList = append(newList, text + string(c))
-				}
-			}
-			result = newList
+			continue
 		}
+
+		var newList []string
+		for _, text := range result {
+			for _, c := range list {
+				newList = append(newList, text + string(c))
+			}
+		}
+		result = newList
 	}
 
 	return result
 }
 
-func wonderfulSolution(digits string) []string {
+func recursiveSolution(digits string) []string {
 	var result []string
 
+	if len(digits) == 0 {
+		return result
+	}
+
+	var backtracking func(current string, nextDigits string)
+
+	backtracking = func(current string, nextDigits string) {
+		if len(nextDigits) == 0 {
+			result = append(result, current)
+			return
+		}
+
+		chars, ok := charMap[rune(nextDigits[0])]
+		if !ok {
+			return
+		}
+
+		for _, letter := range chars {
+			backtracking(current + string(letter), nextDigits[1:])
+		}
+	}
+
+
+	backtracking("", digits)
 	return result
 }
 
 
 func main() {
-	fmt.Println(letterCombinations("23"))
+	//fmt.Println(letterCombinations("23"))
+	fmt.Println(recursiveSolution("23"))
 }
