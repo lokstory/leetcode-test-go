@@ -55,7 +55,7 @@ func threeSum(nums []int) [][]int {
 				continue
 			}
 
-			for k := len(nums)-1; k > j && i != k; k-- {
+			for k := len(nums) - 1; k > j && i != k; k-- {
 				kValue := nums[k]
 
 				if _, ok := secondMap[kValue]; !ok {
@@ -82,51 +82,7 @@ func threeSum(nums []int) [][]int {
 	return result
 }
 
-func wonderfulSolution(nums []int) [][]int {
-	var result [][]int
-
-	if len(nums) < 3 {
-		return result
-	}
-
-	sort.Ints(nums)
-	endID := len(nums) - 1
-
-	for i, value := range nums {
-		if i > 0 && value == nums[i-1] {
-			continue
-		}
-
-		left := i+1
-		right := endID
-
-		for left < right {
-			if right < endID && nums[right] == nums[right+1] {
-				right--
-				continue
-			}
-
-			sum := value + nums[left] + nums[right]
-			if sum > 0 {
-				right--
-				continue
-			}
-
-			if sum < 0 {
-				left++
-				continue
-			}
-
-			result = append(result, []int{value, nums[left], nums[right]})
-			left++
-			right--
-		}
-	}
-	return result
-}
-
-
 func main() {
-	//fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
+	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
 	fmt.Println(threeSum([]int{1, 2, -2, -1}))
 }

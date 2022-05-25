@@ -46,29 +46,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	return next
 }
 
-func wonderfulSolution(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{}
-	dummy.Next = head
-	var length int
-
-	first := head
-	for first != nil {
-		length++
-		first = first.Next
-	}
-
-	length -= n
-	first = dummy
-
-	for length > 0 {
-		length--
-		first = first.Next
-	}
-
-	first.Next = first.Next.Next
-	return dummy.Next
-}
-
 func main() {
 	var nodes []*ListNode
 	for i := 1; i <= 2; i++ {
@@ -80,14 +57,5 @@ func main() {
 		}
 	}
 
-	//node := &ListNode{Val: 1}
-	//nodes = append(nodes, node)
-
-	//node2 := &ListNode{Val: 2}
-	//nodes = append(nodes, node2)
-	//
-	//node.Next = node2
-
-	//fmt.Println(letterCombinations("23"))
 	fmt.Println(removeNthFromEnd(nodes[0], 2))
 }

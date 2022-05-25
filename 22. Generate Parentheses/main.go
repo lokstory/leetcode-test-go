@@ -35,25 +35,6 @@ func backtrack(left, right int, ret *[]string, cur string) {
 	}
 }
 
-func generateParenthesis2(n int) []string {
-	var ret []string
-
-	if n == 0 {
-		ret = append(ret, "")
-	} else {
-		for i := 0; i < n; i++ {
-			for _, left := range generateParenthesis2(i) {
-				for _, right := range generateParenthesis2(n-1-i) {
-					ret = append(ret, fmt.Sprintf("(%s)%s", left, right))
-				}
-			}
-		}
-	}
-
-	return ret
-}
-
 func main() {
 	fmt.Println(generateParenthesis(3))
-	//fmt.Println(generateParenthesis2(3))
 }

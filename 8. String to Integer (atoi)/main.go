@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var reg = regexp.MustCompile(`^([+\-]?)(0*)([0-9]+)`)
+var reg = regexp.MustCompile(`^([+\-]?)(0*)(\d+)`)
 var charMap = map[rune]int{
 	'0': 0,
 	'1': 1,
@@ -98,10 +98,8 @@ func myAtoi(str string) int {
 }
 
 func main() {
-	//fmt.Println(myAtoi("-100000000"))
-	//fmt.Println(myAtoi("-000000000000000000000000000000000000000000000000001"))
+	fmt.Println(myAtoi("-100000000"))
+	fmt.Println(myAtoi("-000000000000000000000000000000000000000000000000001"))
 	fmt.Println(myAtoi("+-2"))
-
-	// 9223372036854775807
 	fmt.Println("9223372036854775808")
 }

@@ -35,16 +35,6 @@ func canJump(nums []int) bool {
 	return false
 }
 
-func canJumpExample(nums []int) bool {
-	lastPos := len(nums) - 1 // last position can reach the end index
-	for i := len(nums) - 1; i >= 0; i-- {
-		if i+nums[i] >= lastPos {
-			lastPos = i
-		}
-	}
-	return lastPos == 0
-}
-
 func main() {
 	fmt.Println(canJump([]int{2, 3, 1, 1, 4}))
 	fmt.Println(canJump([]int{3, 2, 1, 0, 4}))
